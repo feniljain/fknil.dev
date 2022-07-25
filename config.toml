@@ -115,13 +115,13 @@ url = "https://github.com/feniljain/"
 name = "Twitter"
 icon = "fa fa-twitter"
 weight = 3
-url = "https://twitter.com/FenilJain7"
+url = "https://twitter.com/fenil_jain_"
 
 [[params.social]]
 name = "LinkedIn"
 icon = "fa fa-linkedin"
 weight = 4
-url = "https://linkedin.com/in/fenil-jain-b3711117b/"
+url = "https://www.linkedin.com/in/fenil-k-jain/"
 
 [[params.social]]
 name = "Medium"
