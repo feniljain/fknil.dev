@@ -1,5 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+<body>
+    <div class="info-header-section">
+        <div class="header">Fenil Jain</div>
+        <div class="header-subtitle">
+            Systems software engineer with 5 years of experience building high-performance database and real-time media infrastructure.
+        </div>
+        <div class="contact-info">
+            <p>
+                <a href="https://github.com/feniljain/">Github</a> |
+                <a href="mailto:fkjainco@gmail.com">fkjainco@gmail.com</a> |
+                <a href="https://linkedin.com/in/fenil-k-jain">LinkedIn</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Technical Skills</h2><br>
+        <strong>Languages: </strong> Rust, Go, TypeScript, Python, C++, Zig<br>
+        <strong>Systems and Performance:</strong> Linux, perf, pprof, flame graphs, jemalloc<br>
+        <strong>Infrastructure:</strong> Kubernetes, Docker, Helm<br>
+        <strong>Data Systems: </strong> Apache DataFusion, Arrow, Iceberg, PostgreSQL, Kafka, Redis<br>
+        <strong>Real-Time Media: </strong> WebRTC, GStreamer, FFmpeg<br>
+    </div>
+
+    <div class="section">
+     <h2 class="section-title">Work Experience</h2>
+        <h3 class="work-exp-company-title">e6data - Software Development Engineer (Sep 2024 - Present)</h3>
+        <div class="work-exp-company-tech">Rust - Java - DataFusion - Arrow - Iceberg - Kafka - FFI - NVMe</div>
+            <ul>
+                <li>
+                <strong>Proposed</strong> and <strong>led</strong> the migration from Java and hybrid Java-Rust database executors to an all Rust execution stack built on <a href="https://github.com/apache/datafusion">Apache DataFusion</a>, <a href="https://arrow.apache.org/">Apache Arrow</a>, <a href="https://github.com/delta-io/delta-rs">delta-rs</a> and <a href="https://github.com/apache/iceberg-rust">iceberg-rs</a>.
+                </li>
+                <li>
+                Built query <strong>performance monitoring</strong> and <strong>profiling</strong> infrastructure and used it to diagnose and resolve bottlenecks in production customer queries scanning multiple <strong>terabytes</strong> of data.
+                </li>
+                <li>
+                Optimized query execution across the TPC-DS benchmark suite, reducing total runtime by <strong>70%</strong>, from vanilla Datafusion's <strong>1023 seconds to 305 seconds</strong>, versus <strong>341 seconds</strong> for Databricks Runtime under the same benchmark configuration.
+                </li>
+                <li>
+                    Designed hybrid memory and <strong>NVMe</strong> disk based data-caching infrastructure supporting local and distributed execution, improving workload performance by <strong>60-70%</strong>. Further work included reducing warm-up time through distributed cache bootstrapping, introducing <strong>sketch-based</strong> admission policies to prevent cache pollution and optimizing NVMe I/O by evaluating <strong>pread/pwrite</strong>, <strong>epoll</strong> and <strong>io_uring</strong> backends.
+                </li>
+                <li>
+                Led the redesign of logical table reads around <strong>immediately consistent</strong> metadata and table scan layer caching. This eliminated manual catalog refreshes, removed network hops, and retired the Storage and Schema microservices. Overall effort lead to improved query performance by <strong>30%</strong> across various workloads.
+                </li>
+                <li>
+                Diagnosed and fixed <strong>cancellation-safety</strong> and <strong>task-lifecycle</strong> bugs in async Rust query execution, improving query-engine reliability during failures and interrupted queries. [<a href="https://e6data.com/blog/deadlocking-tokio-mutex-without-holding-lock">blog</a>]
+                </li>
+                <li>
+                    Established an upstream contribution workflow that helped e6data become a <strong>leading</strong> Apache DataFusion contributor and <strong>me</strong> getting recognized individually as a <strong>major contributor</strong>. [<a href="https://theconsensus.dev/p/2026/04/03/who-contributed-to-datafusion-53.html">report</a>]
+                </li>
+                <li>
+                    Built Linkstream, an <strong>Iceberg streaming-ingestion</strong> system built on RisingWave, that onboarded a customer at <strong>50K</strong> messages/second with a <strong>15-second</strong> ingestion-to-query SLA.
+                </li>
+                <li>
+                    Added Glue and Hive catalog updates and AWS authentication to iceberg-rust, enabling <strong>production-grade ACID writes</strong> and replacing JNI-based catalog integrations.
+                </li>
+                <li>
+                Extended RisingWave's <strong>Kubernetes operator</strong> to support e6data's infrastructure and local-development workflows, adapting deployment and lifecycle management to internal platform requirements.
+                </li>
+            </ul>
+        </div>
+
+        <h3>Dyte - Software Development Engineer (Sep 2021 - Sep 2024)</h3>
+		<div class="work-exp-company-tech">WebRTC - WebSockets - GStreamer - FFmpeg - Livestreaming - RabbitMQ - Golang - TypeScript - Rust - Kotlin - FFI</div>
+            <ul>
+                <li>Worked on scaling the socket layer, reducing worst case response times from <strong>5-10s to sub-100ms</strong> alongside <strong>reducing failure rates by 85%</strong> drastically by optimizing data access patterns, evolving APIs and removing locking.</li>
+                <li>Led the development of the livestreaming product from concept to launch. Took ownership of end-to-end development, turning it into a core revenue vertical eventually contributing up to <strong>50% of the total revenue, i.e. 250K dollars</strong>.</li>
+                <li>Developed <strong>FFI bindings</strong> of libmediasoupclient for Android/iOS and a <strong>Kotlin Multi-Platform</strong> call statistics collector, forming the foundation of all <strong>enterprise</strong> mobile SDKs.</li>
+                <li>Worked on server-side headless-browser-based recording service, fixing concurrency bugs, writing custom autoscaler, improving <strong>FFmpeg</strong> pipelines and integrating livestreaming.</li>
+                <li>Worked on individual audio track recording, transcription and dev tooling in stream recording service using <strong>GStreamer</strong> and <strong>Rust</strong>.</li>
+                <li>Actively participating in debugging production issues ranging from memory leaks, DB migration failovers, retry storms, etc. on multiple different services.</li>
+                <li>Led work on stability of socket layer, backbone of media and room management core workflows. Established <strong>quick iteration development, testing suites</strong>, better ergonomics using <strong>incremental refactors</strong>.</li>
+                <li>Built and actively helped maintain billing and usage tracking services in <strong>Typescript</strong> allowing automated payments and invoices.</li>
+            </ul>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Open Source</h2>
+            <h3 class="project-title">DataFusion</h3>
+            <ul>
+                <li>
+                    feat: selectivity metrics (for Explain Analyze) in Hash Join
+                    [<a href="https://github.com/apache/datafusion/pull/18488">GitHub</a>]
+                </li>
+                <li>
+                    feat: allow pushdown of dynamic filters having partition cols
+                    [<a href="https://github.com/apache/datafusion/pull/18172">Github</a>]
+                </li>
+                <li>
+                    feat: integrate batch coalescer with async fn exec
+                    [<a href="https://github.com/apache/datafusion/pull/19342">Github</a>]
+                </li>
+                <li>
+                    Remove coalesce batches rule and deprecate CoalesceBatchesExec
+                    [<a href="https://github.com/apache/datafusion/pull/19622">Github</a>]
+                </li>
+                <li>
+                    fix: predicate cache stats calculation
+                    [<a href="https://github.com/apache/datafusion/pull/19561">Github</a>]
+                </li>
+            </ul>
+
+            <h3 class="project-title">Iceberg Rust</h3>
+            <ul>
+                <li>
+                    Implemented NaN value count statistic in parquet writer
+                    [<a href="https://github.com/apache/iceberg-rust/pull/907">Github</a>]
+                </li>
+                <li>
+                    Developed Glue and Hive update table methods completing write support for iceberg-rs
+                    [<a href="https://github.com/feniljain/iceberg-rust/blob/1b74b74a05c6d0a504189c9b303dbd094f321bc1/crates/catalog/hms/src/catalog.rs#L507-L578">Github</a>]
+                    [<a href="https://github.com/feniljain/iceberg-rust/blob/d51f43ce83f90f93ab6e088f79b9efc5f1b7f053/crates/catalog/glue/src/catalog.rs#L629-L701">Github</a>]
+                </li>
+                <li>
+                    Fixed incorrect key_metadata defaults issue
+                    [<a href="https://github.com/apache/iceberg-rust/pull/800">Github</a>]
+                </li>
+                <li>
+                    Implemented AWS Authentication methods for different catalogs
+                    [<a href="https://github.com/feniljain/iceberg-rust/commit/b3c1221c973cd8617d65113a2518fbedf7f98188">Github</a>]
+                </li>
+                <li>
+                    Wrote partition data write integration test
+                    [<a href="https://github.com/apache/iceberg-rust/pull/742">Github</a>]
+                </li>
+            </ul>
+
+            <h3 class="project-title">rust-analyzer</h3>
+            <ul>
+                <li>Developed a complex assist: Extract To Module and worked with the community to improve and maintain it.</li>
+                <li>Contributed critical fixes to Rust Analyzer, improving refactoring, diagnostics, and code assists for thousands of Rust developers.
+                [<a href="https://github.com/rust-lang/rust-analyzer/pulls?q=is%3Apr+sort%3Aupdated-desc+author%3Afeniljain+is%3Aclosed">Github</a>]</li>
+            </ul>
+    </div>
+</body>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,6 +181,8 @@
 
         .header {
             text-align: center;
+            font-weight: bold;
+            font-size: 2em;
         }
 
         .contact-info {
@@ -87,6 +224,10 @@
             margin: 0px;
         }
 
+        .header-subtitle {
+            text-align: center;
+        }
+
         ul {
             font-size: 15px;
         }
@@ -98,135 +239,4 @@
         }
     </style>
 </head>
-<body>
-    <div class="info-header-section">
-        <div class="header">
-            <h1>Fenil Jain</h1>
-        </div>
-        <div class="contact-info">
-            <p>
-                <a href="https://linkedin.com/in/fenil-k-jain">LinkedIn</a> |
-                <a href="mailto:fkjainco@gmail.com">fkjainco@gmail.com</a> |
-                <a href="https://github.com/feniljain/">Github</a>
-            </p>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">Technical Skills</h2>
-        <p><strong>Tools: </strong>Docker, Kubernetes, Redis, RabbitMQ, Kafka, Spark, Postgres, Iceberg, GStreamer, FFmpeg, Git, gRPC, ReactJS, NodeJS, Vim, Tmux</p>
-        <p><strong>Languages: </strong>Rust, Golang, TypeScript, Python, C++, Zig</p>
-    </div>
-
-    <div class="section">
-     <h2 class="section-title">Work Experience</h2>
-        <h3 class="work-exp-company-title">e6data - Software Development Engineer (Sep 2024 - Present)</h3>
-        <div class="work-exp-company-tech">Datafusion - Arrow - Rust - Iceberg</div>
-            <ul>
-                <li>Identified core issues in pure Java and Java plus Rust based database engine. Proposed and led migration to complete Rust based stack building on top of <a href="https://github.com/apache/datafusion">Datafusion</a> as the database execution library.</li>
-                    <ul>
-                        <li>Implemented robust logical table reads as a part of a company wide product simplification effort.</li>
-                            <ul>
-                                <li>Designed with <strong>immediate consistentcy</strong> as first class citizen from day one, reducing end-user churn of "catalog refresh" step.</li>
-                                <li>Migration to Rust plus a re-design of core caching infrastructure in the table scan layer plus removal of network hops optimized the query time by <strong>30%</strong> over various workloads.</li>
-                                <li>Followed the same goal of building on strong community backed foundations by leveraging delta-rs and iceberg-rs in the stack.</li>
-                                <li>Reduced operational burden by deprecating Storage and Schema microservices.</li>
-                            </ul>
-                                <li>Implemented smart single and distributed mode <strong>data caching infrastructure</strong>, boosting performance across workloads by <strong>60-70%</strong>.</li>
-                            <ul>
-                                <li>Reduced cache warmup times by introducing distributed cache bootstrapping.</li>
-                                <li>Introduced <strong>sketch</strong> based admission filters for smarter caching.</li>
-                                <li>Worked on optimizing writes to <strong>NVMe</strong> disks, experimented with pread/pwrite, epoll and io_uring backends.</li>
-                            </ul>
-                        <li>Established processes which enabled whole e6data team to work a lot more closely with the upstream project. We got featured as one of the top contributor companies in Datafusion contributors <a href="https://theconsensus.dev/p/2026/04/03/who-contributed-to-datafusion-53.html">report</a>.</li>
-                            <ul>
-                                <li>I too got listed as a major contributor to the project in the same issue!</li>
-                            </ul>
-                    </ul>
-                <li>Led implementation of now-deprecated hybrid Rust plus Java database engine leading to <strong>2X</strong> decrease in time as compared to Java executor for the same workload.</li>
-                    <ul>
-                        <li>Led migration from internal vector representation to Arrow.</li>
-                    </ul>
-                <li>Designed and implemented Linkstream, a high-performance <strong>Iceberg streaming ingestion</strong> system on RisingWave, successfully onboarding a customer with <strong>50,000 MPS and a 15-second store-to-query SLA</strong>.</li>
-                    <ul>
-                        <li>Enhanced Iceberg Rust with <strong>Glue</strong> and <strong>Hive update table support</strong> for ACID-compliant writes and integrated <strong>AWS authentication</strong> methods, making Linkstream production-ready.</li>
-                        <li>Migrated the Iceberg sink in Linkstream from icelake and JNI based catalog connectors to <strong>Iceberg Rust</strong> for improved stability and performance.</li>
-                        <li>Developed <strong>Hive and Glue</strong> catalog support in Iceberg sink for Linkstream.</li>
-                        <li>Heavily modified Risingwave's default <strong>Kubernetes</strong> operator to work with internal stack and added local development features.</li>
-                    </ul>
-            </ul>
-
-        <h3>Dyte - Software Development Engineer (Sep 2021 - Sep 2024)</h3>
-		<div class="work-exp-company-tech">WebRTC - WebSockets - GStreamer - FFmpeg - Livestreaming - RabbitMQ - Golang - Typescript - Rust - Kotlin - FFI</div>
-            <ul>
-                <li>Worked on scaling the socket layer, reducing worst case response times from <strong>5-10s to sub-100ms</strong> alongside <strong>reducing failure rates by 85%</strong> drastically by optimizing data access patterns, evolving APIs and removing locking.</li>
-                <li>Led the development of the livestreaming product from concept to launch. Took ownership of end-to-end development, turning it into a core revenue vertical eventually contributing upto <strong>50% of the total revenue, i.e. 250K dollars</strong>.</li>
-                <li>Developed <strong>FFI bindings</strong> of libmediasoupclient for Android/iOS and a <strong>Kotlin Multi-Platform</strong> call statistics collector, forming the foundation of all <strong>enterprise</strong> mobile SDKs.</li>
-                <li>Worked on server-side headless browser based recording service, fixing concurrency bugs, writing custom autoscaler, improving <strong>FFmpeg</strong> pipelines and integrating livestreaming.</li>
-                <li>Worked on individual audio track recording, transcription and dev tooling in stream recording service using <strong>GStreamer</strong> and <strong>Rust</strong>.</li>
-                <li>Actively participating in debugging production issues ranging from memory leaks, DB migration failovers, retry storms, etc. on multiple different services.</li>
-                <li>Led work on stability of socket layer, backbone of media and room management core workflows. Established <strong>quick iteration development, testing suites</strong>, better ergonomics using <strong>incremental refactors</strong>.</li>
-                <li>Built and actively helped maintain billing and usage tracking services in <strong>Typescript</strong> allowing automated payments and invoices.</li>
-            </ul>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">Open Source</h2>
-            <h3 class="project-title">Datafusion</h3>
-            <ul>
-                <li>
-                    feat: selectivity metrics (for Explain Analyze) in Hash Join
-                    [<a href="https://github.com/apache/datafusion/pull/18488">Github</a>]
-                </li>
-                <li>
-                    feat: allow pushdown of dynamic filters having partition cols
-                    [<a href="https://github.com/apache/datafusion/pull/18172">Github</a>]
-                </li>
-                <li>
-                    feat: integrate batch coalescer with async fn exec
-                    [<a href="https://github.com/apache/datafusion/pull/19342">Github</a>]
-                </li>
-                <li>
-                    Remove coalesce batches rule and deprecate CoalesceBatchesExec
-                    [<a href="https://github.com/apache/datafusion/pull/19622">Github</a>]
-                </li>
-                <li>
-                    fix: predicate cache stats calculation
-                    [<a href="https://github.com/apache/datafusion/pull/19561">Github</a>]
-                </li>
-            </ul>
-
-            <h3 class="project-title">Iceberg Rust</h3>
-            <ul>
-                <li>
-                    Implemented nan value count statistic in parquet writer
-                    [<a href="https://github.com/apache/iceberg-rust/pull/907">Github</a>]
-                </li>
-                <li>
-                    Developed Glue and Hive update table methods completing write support for iceberg-rs
-                    [<a href="https://github.com/feniljain/iceberg-rust/blob/1b74b74a05c6d0a504189c9b303dbd094f321bc1/crates/catalog/hms/src/catalog.rs#L507-L578">Github</a>]
-                    [<a href="https://github.com/feniljain/iceberg-rust/blob/d51f43ce83f90f93ab6e088f79b9efc5f1b7f053/crates/catalog/glue/src/catalog.rs#L629-L701">Github</a>]
-                </li>
-                <li>
-                    Fixed incorrect key_metadata defaults issue
-                    [<a href="https://github.com/apache/iceberg-rust/pull/800">Github</a>]
-                </li>
-                <li>
-                    Implemented AWS Authentication methods for different catalogs
-                    [<a href="https://github.com/feniljain/iceberg-rust/commit/b3c1221c973cd8617d65113a2518fbedf7f98188">Github</a>]
-                </li>
-                <li>
-                    Wrote partition data write integration test
-                    [<a href="https://github.com/apache/iceberg-rust/pull/742">Github</a>]
-                </li>
-            </ul>
-
-            <h3 class="project-title">Rust Analyzer</h3>
-            <ul>
-                <li>Developed a complex assist: Extract To Module and worked with the community to improve and maintain it.</li>
-                <li>Contributed critical fixes to Rust Analyzer, improving refactoring, diagnostics, and code assists for thousands of Rust developers.
-                [<a href="https://github.com/rust-lang/rust-analyzer/pulls?q=is%3Apr+sort%3Aupdated-desc+author%3Afeniljain+is%3Aclosed">Github</a>]</li>
-            </ul>
-    </div>
-</body>
 </html>
