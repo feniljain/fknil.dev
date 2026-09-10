@@ -3,9 +3,9 @@
 <body>
     <div class="info-header-section">
         <div class="header">Fenil Jain</div>
-        <div class="header-subtitle">
-            Systems software engineer with 5 years of experience building high-performance database and real-time media infrastructure.
-        </div>
+        <!-- <div class="header-subtitle"> -->
+        <!--     Systems software engineer building high-performance database and real-time media infrastructure. -->
+        <!-- </div> -->
         <div class="contact-info">
             <p>
                 <a href="https://github.com/feniljain/">Github</a> |
@@ -30,6 +30,12 @@
         <div class="work-exp-company-tech">Rust - Java - DataFusion - Arrow - Iceberg - Kafka - FFI - NVMe</div>
             <ul>
                 <li>
+                Built Linkstream, an <strong>Iceberg streaming-ingestion</strong> system built on RisingWave, that onboarded a customer at <strong>50K</strong> messages/second with a <strong>15-second</strong> ingestion-to-query SLA.
+                </li>
+                <li>
+                Extended RisingWave's <strong>Kubernetes operator</strong> to support e6data's infrastructure and local-development workflows, adapting deployment and lifecycle management to internal platform requirements.
+                </li>
+                <li>
                 <strong>Proposed</strong> and <strong>led</strong> the migration from Java and hybrid Java-Rust database executors to an all Rust execution stack built on <a href="https://github.com/apache/datafusion">Apache DataFusion</a>, <a href="https://arrow.apache.org/">Apache Arrow</a>, <a href="https://github.com/delta-io/delta-rs">delta-rs</a> and <a href="https://github.com/apache/iceberg-rust">iceberg-rs</a>.
                 </li>
                 <li>
@@ -39,7 +45,7 @@
                 Optimized query execution across the TPC-DS benchmark suite, reducing total runtime by <strong>70%</strong>, from vanilla Datafusion's <strong>1023 seconds to 305 seconds</strong>, versus <strong>341 seconds</strong> for Databricks Runtime under the same benchmark configuration.
                 </li>
                 <li>
-                    Designed hybrid memory and <strong>NVMe</strong> disk based data-caching infrastructure supporting local and distributed execution, improving workload performance by <strong>60-70%</strong>. Further work included reducing warm-up time through distributed cache bootstrapping, introducing <strong>sketch-based</strong> admission policies to prevent cache pollution and optimizing NVMe I/O by evaluating <strong>pread/pwrite</strong>, <strong>epoll</strong> and <strong>io_uring</strong> backends.
+                Designed hybrid memory and <strong>NVMe</strong> disk based data-caching infrastructure supporting local and distributed execution, improving workload performance by <strong>60-70%</strong>. Further work included reducing warm-up time through distributed cache bootstrapping, introducing <strong>sketch-based</strong> admission policies to prevent cache pollution and optimizing NVMe I/O by evaluating <strong>pread/pwrite</strong>, <strong>epoll</strong> and <strong>io_uring</strong> backends.
                 </li>
                 <li>
                 Led the redesign of logical table reads around <strong>immediately consistent</strong> metadata and table scan layer caching. This eliminated manual catalog refreshes, removed network hops, and retired the Storage and Schema microservices. Overall effort lead to improved query performance by <strong>30%</strong> across various workloads.
@@ -48,16 +54,10 @@
                 Diagnosed and fixed <strong>cancellation-safety</strong> and <strong>task-lifecycle</strong> bugs in async Rust query execution, improving query-engine reliability during failures and interrupted queries. [<a href="https://e6data.com/blog/deadlocking-tokio-mutex-without-holding-lock">blog</a>]
                 </li>
                 <li>
-                    Established an upstream contribution workflow that helped e6data become a <strong>leading</strong> Apache DataFusion contributor and <strong>me</strong> getting recognized individually as a <strong>major contributor</strong>. [<a href="https://theconsensus.dev/p/2026/04/03/who-contributed-to-datafusion-53.html">report</a>]
+                Established an upstream contribution workflow that helped e6data become a <strong>leading</strong> Apache DataFusion contributor and <strong>me</strong> getting recognized individually as a <strong>major contributor</strong>. [<a href="https://theconsensus.dev/p/2026/04/03/who-contributed-to-datafusion-53.html">report</a>]
                 </li>
                 <li>
-                    Built Linkstream, an <strong>Iceberg streaming-ingestion</strong> system built on RisingWave, that onboarded a customer at <strong>50K</strong> messages/second with a <strong>15-second</strong> ingestion-to-query SLA.
-                </li>
-                <li>
-                    Added Glue and Hive catalog updates and AWS authentication to iceberg-rust, enabling <strong>production-grade ACID writes</strong> and replacing JNI-based catalog integrations.
-                </li>
-                <li>
-                Extended RisingWave's <strong>Kubernetes operator</strong> to support e6data's infrastructure and local-development workflows, adapting deployment and lifecycle management to internal platform requirements.
+                Added Glue and Hive catalog updates and AWS authentication to iceberg-rust, enabling <strong>production-grade ACID writes</strong> and replacing JNI-based catalog integrations.
                 </li>
             </ul>
         </div>
@@ -66,7 +66,7 @@
 		<div class="work-exp-company-tech">WebRTC - WebSockets - GStreamer - FFmpeg - Livestreaming - RabbitMQ - Golang - TypeScript - Rust - Kotlin - FFI</div>
             <ul>
                 <li>Worked on scaling the socket layer, reducing worst case response times from <strong>5-10s to sub-100ms</strong> alongside <strong>reducing failure rates by 85%</strong> drastically by optimizing data access patterns, evolving APIs and removing locking.</li>
-                <li>Led the development of the livestreaming product from concept to launch. Took ownership of end-to-end development, turning it into a core revenue vertical eventually contributing up to <strong>50% of the total revenue, i.e. 250K dollars</strong>.</li>
+                <li>Led the development of the livestreaming product from concept to launch. Took ownership of end-to-end development, turning it into a core revenue vertical eventually contributing up to <strong>50% of the total revenue, i.e. 250K USD</strong>.</li>
                 <li>Developed <strong>FFI bindings</strong> of libmediasoupclient for Android/iOS and a <strong>Kotlin Multi-Platform</strong> call statistics collector, forming the foundation of all <strong>enterprise</strong> mobile SDKs.</li>
                 <li>Worked on server-side headless-browser-based recording service, fixing concurrency bugs, writing custom autoscaler, improving <strong>FFmpeg</strong> pipelines and integrating livestreaming.</li>
                 <li>Worked on individual audio track recording, transcription and dev tooling in stream recording service using <strong>GStreamer</strong> and <strong>Rust</strong>.</li>
